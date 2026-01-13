@@ -330,6 +330,7 @@
    <dynamicField name="*_tesm" type="text_en"    stored="true"  indexed="false" multiValued="true"  />
    <dynamicField name="*_teim"  type="text_en"   stored="false" indexed="true"  multiValued="true"  />
    <dynamicField name="*_si"    type="string"    stored="false" indexed="true"  multiValued="false" />
+   <dynamicField name="*_ss"    type="string"    stored="true"  indexed="true"  multiValued="false"/>
    <dynamicField name="*_sim"   type="string"    stored="false" indexed="true"  multiValued="true"  />
    <dynamicField name="*_ssm"   type="string"    stored="true"  indexed="false" multiValued="true"  />
    <dynamicField name="*_ssi"   type="string"    stored="true"  indexed="true"  multiValued="false" />
@@ -403,6 +404,9 @@
    <!-- grab structured data that's important -->
    <copyField source="unitid_ssm" dest="text" />
    <copyField source="unitid_ssm" dest="unitid_identifier_match" />
+
+   <!-- enables content_teim field to provide full-text search -->
+   <copyField source="content_teim" dest="text" />
 
    <!-- sort fields -->
    <copyField source="normalized_title_ssm" dest="title_sort"/> <!-- TODO: assumes single values -->

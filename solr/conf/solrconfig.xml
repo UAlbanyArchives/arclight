@@ -313,4 +313,21 @@
     </arr>
   </requestHandler>
 
+  <!--  CUSTOMIZATION: add hashed IDs for use by dynamic sitemap
+        generator. See documentation at:
+        https://github.com/sul-dlss/blacklight_dynamic_sitemap -->
+        
+  <updateRequestProcessorChain name="add_hashed_id">
+    <processor class="solr.processor.SignatureUpdateProcessorFactory">
+      <bool name="enabled">true</bool>
+      <str name="signatureField">hashed_id_ssi</str>
+      <bool name="overwriteDupes">false</bool>
+      <str name="fields">id</str>
+      <str name="signatureClass">solr.processor.Lookup3Signature</str>
+    </processor>
+
+    <processor class="solr.LogUpdateProcessorFactory" />
+    <processor class="solr.RunUpdateProcessorFactory" />
+  </updateRequestProcessorChain>
+
 </config>
